@@ -1,6 +1,5 @@
 package com.example.demo.config;
 
-import com.example.demo.core.ApiResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.micrometer.common.lang.Nullable;
 import lombok.extern.slf4j.Slf4j;
@@ -10,8 +9,6 @@ import org.springframework.http.HttpInputMessage;
 import org.springframework.http.HttpOutputMessage;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.AbstractHttpMessageConverter;
-import org.springframework.http.converter.HttpMessageNotReadableException;
-import org.springframework.http.converter.HttpMessageNotWritableException;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StreamUtils;
 
@@ -23,9 +20,9 @@ import java.util.List;
 @Component
 @Slf4j
 @Order(Ordered.HIGHEST_PRECEDENCE)
-public class CommonMessageConverter extends AbstractHttpMessageConverter<String> {
+public class MyStringMessageConverter extends AbstractHttpMessageConverter<String> {
     private final ObjectMapper objectMapper;
-    public CommonMessageConverter(ObjectMapper objectMapper) {
+    public MyStringMessageConverter(ObjectMapper objectMapper) {
         super(MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN);
         this.objectMapper = objectMapper;
     }
